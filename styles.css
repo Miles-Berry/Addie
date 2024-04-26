@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 720px;
+    width: 1080px;
+    display: flex;
+}
+
+section {
+    border: 1px solid black;
+    margin: 1px;
+}
+
+.left, .right {
+    width: 25%;
+    height: 100%;
+}
+
+.center {
+    width: 50%;
+    height: 100%;
+}
+
+.reminders, .files, .chat {
+    margin: 1px;
+    height: 50%;
+}
+
+.pomo {
+    height: 15%;
+    margin: 1px
+}
+
+.eightball {
+    height: 35%;
+    margin: 1px;
+}
