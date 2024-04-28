@@ -15,6 +15,12 @@ let timerOptions = [
     }
 ]
 
+// Pomodoro Cycle Programming
+let cycle = [0, 1, 0, 1, 0, 1, 0, 1, 2];
+let cycleStep = 0
+let timerOption = cycle[cycleStep];
+
+// Timer
 function startTimer(option) {
     console.log("StartedTimer");
 
@@ -32,6 +38,7 @@ function startTimer(option) {
                 min--;
             } else {
                 //Timer ended
+                cycleStep++;
                 clearInterval(timer);
             }
         }
@@ -52,4 +59,6 @@ function startTimer(option) {
     }, 1000);
 }
 
-timerButton.onclick = startTimer;
+timerButton.onclick = () => {
+    startTimer(option)
+};
