@@ -5,13 +5,13 @@ let timerButton = document.querySelector(".timer-start");
 let timerOptions = [
     {
         name: "focus",
-        duration: 25
+        duration: 1
     },{
         name: "small_break",
         duration: 5
     },{
         name: "large_break",
-        duration: "30"
+        duration: 10
     }
 ]
 
@@ -60,5 +60,5 @@ function startTimer(option) {
 }
 
 timerButton.onclick = () => {
-    startTimer(option)
+    startTimer(timerOption)
 };
