@@ -5,7 +5,7 @@ let timerButton = document.querySelector(".timer-start");
 let timerOptions = [
     {
         name: "focus",
-        duration: 1
+        duration: 25
     },{
         name: "small_break",
         duration: 5
@@ -17,8 +17,7 @@ let timerOptions = [
 
 // Pomodoro Cycle Programming
 let cycle = [0, 1, 0, 1, 0, 1, 0, 1, 2];
-let cycleStep = 0
-let timerOption = cycle[cycleStep];
+let cycleStep = 0;
 
 // Timer
 function startTimer(option) {
@@ -39,6 +38,7 @@ function startTimer(option) {
             } else {
                 //Timer ended
                 cycleStep++;
+                timerText.innerHTML("Timer done!");
                 clearInterval(timer);
             }
         }
@@ -60,5 +60,5 @@ function startTimer(option) {
 }
 
 timerButton.onclick = () => {
-    startTimer(timerOption)
+    startTimer(cycle[cycleStep]);
 };
