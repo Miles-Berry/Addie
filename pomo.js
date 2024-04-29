@@ -4,7 +4,7 @@ let leadingZeroMinutes;
 let leadingZeroSeconds;
 let timerID;
 let cycle = [0, 1, 0, 1, 0, 1, 0, 1, 2];
-let cycleStep = 0;
+let step = 0;
 let timerOptions = [
     {
         name: "focus",
@@ -19,7 +19,7 @@ let timerOptions = [
 ]
 let isStarted = false;
 let isPaused = true;
-let min = 25;
+let min = timerOptions[cycle[step]].duration;
 let sec = -1
 
 function adjustTime() {
@@ -36,7 +36,6 @@ function adjustTime() {
 };
 
 function updateTimerText() {
-    console.log(min + ":" + sec);
     if (min < 10) { leadingZeroMinutes = "0"; } 
     else { leadingZeroMinutes = ""; }
 
@@ -63,7 +62,8 @@ function pauseTimer(){
 
 function stopTimer(){
     console.log("stopped");
-    cycleStep++;
+    step = (step + 1) % cycle.length;
+
     timerText.innerHTML = "Timer done!";
     isPaused = true;
     timerButton.innerHTML = "Pause";
