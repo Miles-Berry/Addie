@@ -1,7 +1,10 @@
 let timerText = document.querySelector(".timer-clock");
 let timerButton = document.querySelector(".timer-start");
-
-// Different Timer times
+let leadingZeroMinutes;
+let leadingZeroSeconds;
+let timerID;
+let cycle = [0, 1, 0, 1, 0, 1, 0, 1, 2];
+let cycleStep = 0;
 let timerOptions = [
     {
         name: "focus",
@@ -11,54 +14,79 @@ let timerOptions = [
         duration: 5
     },{
         name: "large_break",
-        duration: 10
+        duration: 30
     }
 ]
+let isStarted = false;
+let isPaused = true;
+let min = 25;
+let sec = -1
 
-// Pomodoro Cycle Programming
-let cycle = [0, 1, 0, 1, 0, 1, 0, 1, 2];
-let cycleStep = 0;
-
-// Timer
-function startTimer(option) {
-    console.log("StartedTimer");
-
-    // Timer Variables
-    let min = timerOptions[option].duration;
-    let sec = -1;
-    // Timer operation
-    let timer = setInterval( () => {
-        sec--;
-        //Time checking
-        if (sec < 0) {
-            if (min > 0) {
-                //Reset seconds and reduce minutes
-                sec = 59;
-                min--;
-            } else {
-                //Timer ended
-                cycleStep++;
-                timerText.innerHTML("Timer done!");
-                clearInterval(timer);
-            }
+function adjustTime() {
+    sec--;
+    if (sec < 0) {
+        if (min > 0) {
+            sec = 59;
+            min--;
+        } else {
+            stopTimer();
         }
+    }
+    updateTimerText();
+};
 
-        //Formatting for single digit numbers
-        let leadingZeroMinutes = "";
-        let leadingZeroSeconds = "";
-        if (min < 10) {
-            leadingZeroMinutes = "0";
-        }
-        if (sec < 10) {
-            leadingZeroSeconds = "0"
-        }
+function updateTimerText() {
+    console.log(min + ":" + sec);
+    if (min < 10) { leadingZeroMinutes = "0"; } 
+    else { leadingZeroMinutes = ""; }
 
-        //Update text
-        timerText.innerHTML = leadingZeroMinutes + min + ":" + leadingZeroSeconds + sec;
+    if (sec < 10) { leadingZeroSeconds = "0"}
+    else { leadingZeroSeconds = ""; }
 
-    }, 1000);
+    timerText.innerHTML = leadingZeroMinutes + min + ":" + leadingZeroSeconds + sec;
+};
+
+function startTimer(){
+    console.log("started");
+    isStarted = true;
+    isPaused = false;
+    timerButton.innerHTML = "Pause";
+    timerID = setInterval(adjustTime, 1000);
+};
+
+function pauseTimer(){
+    console.log("paused");
+    isPaused = true;
+    timerButton.innerHTML = "Resume";
+    clearInterval(timerID);
+};
+
+function stopTimer(){
+    console.log("stopped");
+    cycleStep++;
+    timerText.innerHTML = "Timer done!";
+    isPaused = true;
+    timerButton.innerHTML = "Pause";
+    clearInterval(timerID);
+};
+
+function resumeTimer(){
+    console.log("resumed");
+    isPaused = false;
+    timerButton.innerHTML = "Pause";
+    timerID = setInterval(adjustTime, 1000);
+};
+
+function timerManager(){
+    if (!isStarted){
+        startTimer();
+    } else if (isPaused){
+        resumeTimer()
+    } else {
+        pauseTimer()
+    }
 }
 
 timerButton.onclick = () => {
-    startTimer(cycle[cycleStep]);
+    timerManager()
 };
