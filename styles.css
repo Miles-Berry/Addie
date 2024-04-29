@@ -1,41 +1,140 @@
+:root {
+    box-sizing: border-box;
+    --light-peach: #f8da81;
+    --dark-peach: #f8a54d;
+    --text: #373548;
+    --blue-grey: #3a4c69;
+    --creme: #f9dcc0;
+}
+
+@font-face {
+    font-family: Almendra;
+    src: url(./fonts/Almendra_Display/AlmendraDisplay-Regular.ttf)
+}
+@font-face {
+    font-family: Anonymous;
+    src: url(./fonts/Anonymous_Pro/AnonymousPro-Regular.ttf)
+
+}
+@font-face {
+    font-family: Balthazar;
+    src: url(./fonts/Balthazar/Balthazar-Regular.ttf)
+}
+@font-face {
+    font-family: PT;
+    src: url(./fonts/PT_Mono/PTMono-Regular.ttf)
+}
+@font-face {
+    font-family: Rubik;
+    src: url(./fonts/Rubik_Mono_One/RubikMonoOne-Regular.ttf)
+}
+@font-face {
+    font-family: VT;
+    src: url(./fonts/VT323/VT323-Regular.ttf)
+}
+@font-face {
+    font-family: Work_sans;
+    src: url(./fonts/Work_Sans/WorkSans-VariableFont_wght.ttf)
+}
+
+
 * {
     margin: 0;
     padding: 0;
+    color: var(--text);
 }
 
 body {
-    height: 720px;
-    width: 1080px;
+    width: 100dvw;
+    height: 100dvh;
     display: flex;
-    margin: 0 auto;
+    flex-flow: column nowrap;
+    align-items: center;
+    background-color: var(--dark-peach);
 }
 
-section {
-    border: 1px solid black;
-    margin: 1px;
+.app-container {
+    border: 5px double var(--light-peach);
+    border-radius: 7px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 0 4px;
+    height: 85%;
+    width: 90%;
+}
+
+.section-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
 
 .left, .right {
     width: 25%;
-    height: 100%;
 }
 
 .center {
     width: 50%;
-    height: 100%;
+}
+
+.reminders,
+.files,
+.planner,
+.chat,
+.pomo,
+.eightball {
+    width: 98%; 
+    background-color: var(--light-peach);
+    border-radius: 7px;
+    margin: 2% 2% 2% 2%;
+    text-align: center;
 }
 
 .reminders, .files, .chat {
-    margin: 1px;
-    height: 50%;
+    height: 48%;
+}
+
+.planner {
+    margin-top: 1%;
+    height: 100%;
 }
 
 .pomo {
-    height: 15%;
-    margin: 1px
+    height: 13%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.timer-clock {
+    font-size: 24px;
+    font-family: Rubik;
+    color: var(--text);
 }
 
 .eightball {
-    height: 35%;
-    margin: 1px;
+    height: 33%;
+    
+}
+
+h1 {
+    text-align: center;
+    font-family: Almendra;
+    font-size: 36px;
+}
+
+.section-title {
+    font-family: Almendra;
+    font-size: 24px;
+}
+
+button {
+    background-color: var(--blue-grey);
+    color: var(--creme);
+    font-family: Rubik;
+    font-size: 12px;
+    padding: 1% 2%;
+    border-radius: 7px;
+    border: 1px double var(--text);
 }

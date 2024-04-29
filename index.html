@@ -6,37 +6,44 @@
         <link rel="stylesheet" href="styles.css">
     </head>
     <body>
-        <!-- Left Section -->
-        <section class="left">
-            <section class="reminders">reminders</section>
-            <section class="files">files</section>
+        <!-- Title Bar -->
+        <section class="header">
+            <h1>Addie</h1>
         </section>
 
-        <!-- Center Section -->
-        <section class="center">
-	    <section class="planner">
-		planner
-	    </section>
-	</section>
+        <div class="app-container">
+            <!-- Left Section -->
+            <div class="left section-container">
+                <section class="reminders"><h2 class="section-title">Reminders</h2></section>
+                <section class="files"><h2 class="section-title">Files</h2></section>
+            </div>
 
-        <!-- right Section -->
-        <section class="right">
-            <!-- Chat Menu -->
-            <section class="chat">chat</section>
+            <!-- Center Section -->
+            <div class="center section-container">
+                <section class="planner">
+                    <h2 class="section-title">Planner</h2>
+                </section>
+            </div>
 
-            <!-- Pomodoro Timer-->
-            <section class="pomo">
-                <h2 class="section-title">Pomodoro Timer ⏱️</h2>
-                <div class="timer-clock">25:00</div> 
-                <button class="timer-start">Start Timer</button>
-            </section>
+            <!-- right Section -->
+            <div class="right section-container">
+                <!-- Chat Menu -->
+                <section class="chat"><h2 class="section-title">Chat</h2></section>
 
-            <!-- Magic 8-Ball-->
-            <section class="eightball">8ball</section>
+                <!-- Pomodoro Timer-->
+                <section class="pomo">
+                    <h2 class="section-title">Pomodoro Timer</h2>
+                    <div class="timer-clock">25:00</div> 
+                    <button class="timer-start">Start Timer</button>
+                </section>
 
-        </section>
+                <!-- Magic 8-Ball-->
+                <section class="eightball"><h2 class="section-title">Magic 8-Ball</h2></section>
 
-        <!-- Script Tags -->
-        <script src="./pomo.js"></script>
+            </div>
+        </div>
+
+    <!-- Script Tags -->
+    <script src="./pomo.js"></script>
     </body>
 </html>
